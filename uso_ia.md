@@ -98,6 +98,6 @@
 
 *João Pedro Silva da Silva*  
 *Rodrigo Marques Matos da Silva*  
-*Noagem Geraldo Ismael Coelho*  
+*Noam Geraldo Ismael Coelho*  
 
 **Data:** Junho de 2026

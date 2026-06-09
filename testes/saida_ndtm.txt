@@ -1,0 +1,204 @@
+────────────────────────────────────────────────────────────────
+  DEFINIÇÃO FORMAL DA NDTM
+────────────────────────────────────────────────────────────────
+  Q       = ['q0', 'q_accept', 'q_back_a', 'q_back_b', 'q_center_a', 'q_center_b', 'q_reject', 'q_return', 'q_right_a', 'q_right_b']
+  Σ       = ['a', 'b']
+  Γ       = ['$', 'X', '_', 'a', 'b']
+  q₀      = q0
+  q_acc   = q_accept
+  q_rej   = q_reject
+  |δ|     = 40 entradas na função de transição
+  ND pts  = 2 pares (estado,símbolo) com múltiplas transições
+────────────────────────────────────────────────────────────────
+
+
+  FUNÇÃO DE TRANSIÇÃO δ
+  (Estado, Símbolo)            → (novo_estado, escreve, move)  [grau ND]
+  ──────────────────────────────────────────────────────────────────────
+  (q0, '$')                       → (q0, '$', R)  [1]
+  (q0, 'X')                       → (q0, 'X', R)  [1]
+  (q0, '_')                       → (q_accept, '_', S)  [1]
+  (q0, 'a')                       → (q_right_a, 'X', R)  |  (q_center_a, 'X', R)  [2]
+  (q0, 'b')                       → (q_right_b, 'X', R)  |  (q_center_b, 'X', R)  [2]
+  (q_back_a, '$')                 → (q_reject, '$', S)  [1]
+  (q_back_a, 'X')                 → (q_back_a, 'X', L)  [1]
+  (q_back_a, '_')                 → (q_back_a, '_', L)  [1]
+  (q_back_a, 'a')                 → (q_return, 'X', L)  [1]
+  (q_back_a, 'b')                 → (q_reject, 'b', S)  [1]
+  (q_back_b, '$')                 → (q_reject, '$', S)  [1]
+  (q_back_b, 'X')                 → (q_back_b, 'X', L)  [1]
+  (q_back_b, '_')                 → (q_back_b, '_', L)  [1]
+  (q_back_b, 'a')                 → (q_reject, 'a', S)  [1]
+  (q_back_b, 'b')                 → (q_return, 'X', L)  [1]
+  (q_center_a, '$')               → (q_center_a, '$', R)  [1]
+  (q_center_a, 'X')               → (q_center_a, 'X', R)  [1]
+  (q_center_a, '_')               → (q_accept, '_', S)  [1]
+  (q_center_a, 'a')               → (q_reject, 'a', S)  [1]
+  (q_center_a, 'b')               → (q_reject, 'b', S)  [1]
+  (q_center_b, '$')               → (q_center_b, '$', R)  [1]
+  (q_center_b, 'X')               → (q_center_b, 'X', R)  [1]
+  (q_center_b, '_')               → (q_accept, '_', S)  [1]
+  (q_center_b, 'a')               → (q_reject, 'a', S)  [1]
+  (q_center_b, 'b')               → (q_reject, 'b', S)  [1]
+  (q_return, '$')                 → (q0, '$', R)  [1]
+  (q_return, 'X')                 → (q_return, 'X', L)  [1]
+  (q_return, '_')                 → (q_return, '_', L)  [1]
+  (q_return, 'a')                 → (q_return, 'a', L)  [1]
+  (q_return, 'b')                 → (q_return, 'b', L)  [1]
+  (q_right_a, '$')                → (q_right_a, '$', R)  [1]
+  (q_right_a, 'X')                → (q_right_a, 'X', R)  [1]
+  (q_right_a, '_')                → (q_back_a, '_', L)  [1]
+  (q_right_a, 'a')                → (q_right_a, 'a', R)  [1]
+  (q_right_a, 'b')                → (q_right_a, 'b', R)  [1]
+  (q_right_b, '$')                → (q_right_b, '$', R)  [1]
+  (q_right_b, 'X')                → (q_right_b, 'X', R)  [1]
+  (q_right_b, '_')                → (q_back_b, '_', L)  [1]
+  (q_right_b, 'a')                → (q_right_b, 'a', R)  [1]
+  (q_right_b, 'b')                → (q_right_b, 'b', R)  [1]
+
+================================================================================
+  TESTES — NDTM para Palíndromos sobre {a, b}
+================================================================================
+
+Entrada        Esperado    Obtido      Ramos    Passos   Correto
+─────────────────────────────────────────────────────────────────
+  ''           ACEITA      ACEITA      2        1        OK
+  'a'          ACEITA      ACEITA      5        2        OK
+  'b'          ACEITA      ACEITA      5        2        OK
+  'aa'         ACEITA      ACEITA      12       9        OK
+  'bb'         ACEITA      ACEITA      12       9        OK
+  'aba'        ACEITA      ACEITA      18       12       OK
+  'bab'        ACEITA      ACEITA      18       12       OK
+  'abba'       ACEITA      ACEITA      30       25       OK
+  'aabaa'      ACEITA      ACEITA      39       30       OK
+  'ababa'      ACEITA      ACEITA      39       30       OK
+  'aabbaa'     ACEITA      ACEITA      56       49       OK
+  'baab'       ACEITA      ACEITA      30       25       OK
+  'bbaabb'     ACEITA      ACEITA      56       49       OK
+  'ab'         REJEITA     REJEITA     6        3        OK
+  'ba'         REJEITA     REJEITA     6        3        OK
+  'abb'        REJEITA     REJEITA     8        5        OK
+  'baa'        REJEITA     REJEITA     8        5        OK
+  'abab'       REJEITA     REJEITA     9        6        OK
+  'abcd'       REJEITA     REJEITA     5        2        OK
+  'aab'        REJEITA     REJEITA     8        5        OK
+  'bba'        REJEITA     REJEITA     8        5        OK
+
+  Resultado: 21/21 corretos
+
+================================================================================
+  RASTREAMENTOS DE EXECUÇÃO (CAMINHO ACEITANTE)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+  Entrada: ''  →  ACEITA
+────────────────────────────────────────────────────────────────────────────────
+Passo   0 | Estado: q0               | Cab: 1 | Fita:  $ [_] _
+Passo   1 | Estado: q_accept         | Cab: 1 | Fita:  $ [_] _
+
+
+────────────────────────────────────────────────────────────────────────────────
+  Entrada: 'a'  →  ACEITA
+────────────────────────────────────────────────────────────────────────────────
+Passo   0 | Estado: q0               | Cab: 1 | Fita:  $ [a] _  _
+Passo   1 | Estado: q_center_a       | Cab: 2 | Fita:  $  X [_] _
+Passo   2 | Estado: q_accept         | Cab: 2 | Fita:  $  X [_] _
+
+
+────────────────────────────────────────────────────────────────────────────────
+  Entrada: 'aba'  →  ACEITA
+────────────────────────────────────────────────────────────────────────────────
+Passo   0 | Estado: q0               | Cab: 1 | Fita:  $ [a] b  a  _  _
+Passo   1 | Estado: q_right_a        | Cab: 2 | Fita:  $  X [b] a  _  _
+Passo   2 | Estado: q_right_a        | Cab: 3 | Fita:  $  X  b [a] _  _
+Passo   3 | Estado: q_right_a        | Cab: 4 | Fita:  $  X  b  a [_] _
+Passo   4 | Estado: q_back_a         | Cab: 3 | Fita:  $  X  b [a] _  _
+Passo   5 | Estado: q_return         | Cab: 2 | Fita:  $  X [b] X  _  _
+Passo   6 | Estado: q_return         | Cab: 1 | Fita:  $ [X] b  X  _  _
+Passo   7 | Estado: q_return         | Cab: 0 | Fita: [$] X  b  X  _  _
+Passo   8 | Estado: q0               | Cab: 1 | Fita:  $ [X] b  X  _  _
+Passo   9 | Estado: q0               | Cab: 2 | Fita:  $  X [b] X  _  _
+Passo  10 | Estado: q_center_b       | Cab: 3 | Fita:  $  X  X [X] _  _
+Passo  11 | Estado: q_center_b       | Cab: 4 | Fita:  $  X  X  X [_] _
+Passo  12 | Estado: q_accept         | Cab: 4 | Fita:  $  X  X  X [_] _
+
+
+────────────────────────────────────────────────────────────────────────────────
+  Entrada: 'abba'  →  ACEITA
+────────────────────────────────────────────────────────────────────────────────
+Passo   0 | Estado: q0               | Cab: 1 | Fita:  $ [a] b  b  a  _  _
+Passo   1 | Estado: q_right_a        | Cab: 2 | Fita:  $  X [b] b  a  _  _
+Passo   2 | Estado: q_right_a        | Cab: 3 | Fita:  $  X  b [b] a  _  _
+Passo   3 | Estado: q_right_a        | Cab: 4 | Fita:  $  X  b  b [a] _  _
+Passo   4 | Estado: q_right_a        | Cab: 5 | Fita:  $  X  b  b  a [_] _
+Passo   5 | Estado: q_back_a         | Cab: 4 | Fita:  $  X  b  b [a] _  _
+Passo   6 | Estado: q_return         | Cab: 3 | Fita:  $  X  b [b] X  _  _
+Passo   7 | Estado: q_return         | Cab: 2 | Fita:  $  X [b] b  X  _  _
+Passo   8 | Estado: q_return         | Cab: 1 | Fita:  $ [X] b  b  X  _  _
+Passo   9 | Estado: q_return         | Cab: 0 | Fita: [$] X  b  b  X  _  _
+Passo  10 | Estado: q0               | Cab: 1 | Fita:  $ [X] b  b  X  _  _
+Passo  11 | Estado: q0               | Cab: 2 | Fita:  $  X [b] b  X  _  _
+Passo  12 | Estado: q_right_b        | Cab: 3 | Fita:  $  X  X [b] X  _  _
+Passo  13 | Estado: q_right_b        | Cab: 4 | Fita:  $  X  X  b [X] _  _
+Passo  14 | Estado: q_right_b        | Cab: 5 | Fita:  $  X  X  b  X [_] _
+Passo  15 | Estado: q_back_b         | Cab: 4 | Fita:  $  X  X  b [X] _  _
+Passo  16 | Estado: q_back_b         | Cab: 3 | Fita:  $  X  X [b] X  _  _
+Passo  17 | Estado: q_return         | Cab: 2 | Fita:  $  X [X] X  X  _  _
+Passo  18 | Estado: q_return         | Cab: 1 | Fita:  $ [X] X  X  X  _  _
+Passo  19 | Estado: q_return         | Cab: 0 | Fita: [$] X  X  X  X  _  _
+Passo  20 | Estado: q0               | Cab: 1 | Fita:  $ [X] X  X  X  _  _
+Passo  21 | Estado: q0               | Cab: 2 | Fita:  $  X [X] X  X  _  _
+Passo  22 | Estado: q0               | Cab: 3 | Fita:  $  X  X [X] X  _  _
+Passo  23 | Estado: q0               | Cab: 4 | Fita:  $  X  X  X [X] _  _
+Passo  24 | Estado: q0               | Cab: 5 | Fita:  $  X  X  X  X [_] _
+Passo  25 | Estado: q_accept         | Cab: 5 | Fita:  $  X  X  X  X [_] _
+
+
+────────────────────────────────────────────────────────────────────────────────
+  Entrada: 'aabaa'  →  ACEITA
+────────────────────────────────────────────────────────────────────────────────
+Passo   0 | Estado: q0               | Cab: 1 | Fita:  $ [a] a  b  a  a  _  _
+Passo   1 | Estado: q_right_a        | Cab: 2 | Fita:  $  X [a] b  a  a  _  _
+Passo   2 | Estado: q_right_a        | Cab: 3 | Fita:  $  X  a [b] a  a  _  _
+Passo   3 | Estado: q_right_a        | Cab: 4 | Fita:  $  X  a  b [a] a  _  _
+Passo   4 | Estado: q_right_a        | Cab: 5 | Fita:  $  X  a  b  a [a] _  _
+Passo   5 | Estado: q_right_a        | Cab: 6 | Fita:  $  X  a  b  a  a [_] _
+Passo   6 | Estado: q_back_a         | Cab: 5 | Fita:  $  X  a  b  a [a] _  _
+Passo   7 | Estado: q_return         | Cab: 4 | Fita:  $  X  a  b [a] X  _  _
+Passo   8 | Estado: q_return         | Cab: 3 | Fita:  $  X  a [b] a  X  _  _
+Passo   9 | Estado: q_return         | Cab: 2 | Fita:  $  X [a] b  a  X  _  _
+Passo  10 | Estado: q_return         | Cab: 1 | Fita:  $ [X] a  b  a  X  _  _
+Passo  11 | Estado: q_return         | Cab: 0 | Fita: [$] X  a  b  a  X  _  _
+Passo  12 | Estado: q0               | Cab: 1 | Fita:  $ [X] a  b  a  X  _  _
+Passo  13 | Estado: q0               | Cab: 2 | Fita:  $  X [a] b  a  X  _  _
+Passo  14 | Estado: q_right_a        | Cab: 3 | Fita:  $  X  X [b] a  X  _  _
+Passo  15 | Estado: q_right_a        | Cab: 4 | Fita:  $  X  X  b [a] X  _  _
+Passo  16 | Estado: q_right_a        | Cab: 5 | Fita:  $  X  X  b  a [X] _  _
+Passo  17 | Estado: q_right_a        | Cab: 6 | Fita:  $  X  X  b  a  X [_] _
+Passo  18 | Estado: q_back_a         | Cab: 5 | Fita:  $  X  X  b  a [X] _  _
+Passo  19 | Estado: q_back_a         | Cab: 4 | Fita:  $  X  X  b [a] X  _  _
+Passo  20 | Estado: q_return         | Cab: 3 | Fita:  $  X  X [b] X  X  _  _
+Passo  21 | Estado: q_return         | Cab: 2 | Fita:  $  X [X] b  X  X  _  _
+Passo  22 | Estado: q_return         | Cab: 1 | Fita:  $ [X] X  b  X  X  _  _
+Passo  23 | Estado: q_return         | Cab: 0 | Fita: [$] X  X  b  X  X  _  _
+Passo  24 | Estado: q0               | Cab: 1 | Fita:  $ [X] X  b  X  X  _  _
+Passo  25 | Estado: q0               | Cab: 2 | Fita:  $  X [X] b  X  X  _  _
+Passo  26 | Estado: q0               | Cab: 3 | Fita:  $  X  X [b] X  X  _  _
+Passo  27 | Estado: q_center_b       | Cab: 4 | Fita:  $  X  X  X [X] X  _  _
+Passo  28 | Estado: q_center_b       | Cab: 5 | Fita:  $  X  X  X  X [X] _  _
+Passo  29 | Estado: q_center_b       | Cab: 6 | Fita:  $  X  X  X  X  X [_] _
+Passo  30 | Estado: q_accept         | Cab: 6 | Fita:  $  X  X  X  X  X [_] _
+
+
+================================================================================
+  RASTREAMENTOS DE EXECUÇÃO (ENTRADAS REJEITADAS)
+================================================================================
+
+  Entrada: 'ab'  →  REJEITADA
+  Ramos explorados: 6  |  Profundidade máxima: 3  |  Ramos rejeitados: 1
+
+  Entrada: 'abb'  →  REJEITADA
+  Ramos explorados: 8  |  Profundidade máxima: 5  |  Ramos rejeitados: 2
+
+  Entrada: 'abab'  →  REJEITADA
+  Ramos explorados: 9  |  Profundidade máxima: 6  |  Ramos rejeitados: 2

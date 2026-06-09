@@ -3,7 +3,7 @@ AV2 - Teoria da Computabilidade
 Opção 4: Máquina de Turing Não Determinística (NDTM)
 Problema: Reconhecimento de Palíndromos sobre {a, b}
 
-Equipe: João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noagem Geraldo Ismael Coelho
+Equipe: João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noam Geraldo Ismael Coelho
 Semestre: 01/2026 — Prof. Daniel Leal Souza
 
 Execução:

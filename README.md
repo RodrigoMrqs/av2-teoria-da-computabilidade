@@ -8,7 +8,7 @@
 **Equipe:**
 - João Pedro Silva da Silva
 - Rodrigo Marques Matos da Silva
-- Noagem Geraldo Ismael Coelho
+- Noam Geraldo Ismael Coelho
 
 **Modelos escolhidos:**
 - **Opção 4 — Máquina de Turing Não Determinística (NDTM)**

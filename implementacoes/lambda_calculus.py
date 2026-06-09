@@ -3,7 +3,7 @@ AV2 — Teoria da Computabilidade
 Opção 7: λ-Cálculo
 Problema: Avaliador de λ-expressões com numerais e booleanos de Church
 
-Equipe: João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noagem Geraldo Ismael Coelho
+Equipe: João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noam Geraldo Ismael Coelho
 Semestre: 01/2026 — Prof. Daniel Leal Souza
 
 Execução:

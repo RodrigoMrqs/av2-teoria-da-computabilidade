@@ -1,7 +1,7 @@
 # AV2 — Teoria da Computabilidade
 ## Máquinas Universais, Turing e λ-Cálculo
 
-**Equipe:** João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noagem Geraldo Ismael Coelho  
+**Equipe:** João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noam Geraldo Ismael Coelho  
 **Modelos escolhidos:** 4 — NDTM · 7 — λ-Cálculo  
 **Professor:** Daniel Leal Souza · Semestre 01/2026
 

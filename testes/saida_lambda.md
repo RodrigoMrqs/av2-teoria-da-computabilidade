@@ -1,3 +1,6 @@
+# Saída: λ-Cálculo — Avaliador de Expressões
+
+```
 
 ========================================================================
   VARIÁVEIS LIVRES E LIGADAS
@@ -182,3 +185,4 @@
   10  (λp.λq.p p q) (λt.λf.f) (λt.λf.t)            4        OR FALSE TRUE → TRUE  [Disjunção]
 
   Ex.11  Ω = (λx.x x)(λx.x x)  →  diverge (sem forma normal)
+```

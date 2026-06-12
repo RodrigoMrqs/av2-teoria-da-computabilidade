@@ -2,6 +2,7 @@
 ## Máquinas Universais, Turing e λ-Cálculo
 
 **Disciplina:** Teoria da Computabilidade  
+**Turma:** CC5NA  
 **Professor:** Daniel Leal Souza  
 **Semestre:** 01/2026 — CESUPA  
 
@@ -9,6 +10,7 @@
 - João Pedro Silva da Silva
 - Rodrigo Marques Matos da Silva
 - Noam Geraldo Ismael Coelho
+- Analice Alves Johnston Pinheiro
 
 **Modelos escolhidos:**
 - **Opção 4 — Máquina de Turing Não Determinística (NDTM)**
@@ -40,7 +42,8 @@ av2-teoria-da-computabilidade/
 │   ├── rastreamento_ndtm.md           ← rastreamentos detalhados de execução da NDTM
 │   └── rastreamento_lambda.md         ← rastreamentos detalhados de execução do λ-Cálculo
 ├── slides/
-│   └── slides.md                      ← slides em Markdown (15 slides)
+│   └── Maquinas-Universais-Turing-e-l-Calculo.pptx  ← apresentação (gerada via Gamma AI)
+├── relatorio_av2.docx                 ← relatório acadêmico completo
 └── uso_ia.md                          ← declaração de uso de inteligência artificial
 ```
 
@@ -77,7 +80,7 @@ python implementacoes/ndtm_palindromos.py
 Saída esperada:
 - Definição formal da máquina (Q, Σ, Γ, δ, q₀, q_acc, q_rej)
 - Tabela completa de transições
-- Tabela de testes com 15 entradas (aceitas e rejeitadas)
+- Tabela de testes com 21 entradas (aceitas e rejeitadas)
 - Rastreamentos passo-a-passo das entradas aceitas
 - Estatísticas dos ramos rejeitados
 
@@ -113,11 +116,11 @@ Execute as células em ordem. O notebook contém todas as implementações, defi
 ### NDTM — Palíndromos
 
 ```
-Entrada: 'aba'   → ACEITA  (ramos: 7, passos: 11)
-Entrada: 'abba'  → ACEITA  (ramos: 6, passos: 16)
-Entrada: 'ab'    → REJEITA (ramos: 4)
-Entrada: 'abab'  → REJEITA (ramos: 14)
-Entrada: ''      → ACEITA  (ramos: 1, passos: 0)
+Entrada: 'aba'   → ACEITA  (ramos: 18, passos: 12)
+Entrada: 'abba'  → ACEITA  (ramos: 30, passos: 25)
+Entrada: 'ab'    → REJEITA (ramos: 6)
+Entrada: 'abab'  → REJEITA (ramos: 9)
+Entrada: ''      → ACEITA  (ramos: 2,  passos: 1)
 ```
 
 ### λ-Cálculo — β-Redução
@@ -145,7 +148,7 @@ MUL 2 2:   → λf.λx.f(f(f(f x)))   [Church(4)] ✅
 - **Q** = {q0, q_right_a, q_right_b, q_back_a, q_back_b, q_return, q_center_a, q_center_b, q_accept, q_reject} — **10 estados**
 - **Σ** = {a, b}
 - **Γ** = {a, b, X, $, _}
-- **δ**: Q × Γ → 𝒫(Q × Γ × {L, R, S}) — **41 entradas, 2 com grau ND = 2**
+- **δ**: Q × Γ → 𝒫(Q × Γ × {L, R, S}) — **40 entradas, 2 com grau ND = 2**
 - **Critério de aceitação:** existe ao menos um ramo que atinge q_accept
 - **Simulação:** BFS sobre todos os ramos da árvore de computação
 
@@ -224,16 +227,16 @@ Em resumo: a IA foi utilizada como auxílio ao estudo e revisão; toda a lógica
 ## Checklist (conforme lauda AV2)
 
 - [x] Turma, professor e todos os integrantes identificados
-- [x] Exatamente 2 máquinas/modelos distintos (equipe de 3 integrantes)
+- [x] Exatamente 2 máquinas/modelos distintos (equipe de 4 integrantes)
 - [x] 1 implementação bem elaborada para cada modelo (total: 2)
 - [x] Cada implementação resolve um problema diferente
-- [x] NDTM: 10 estados (> 8 exigidos), 41 transições (> 10 recomendadas)
-- [x] λ-Cálculo: 11 exemplos com 34 passos β totais (> 7 exigidos)
+- [x] NDTM: 10 estados (> 8 exigidos), 40 transições (> 10 recomendadas)
+- [x] λ-Cálculo: 11 exemplos com 40 passos β totais (> 7 exigidos)
 - [x] Rastreamentos com entradas aceitas, rejeitadas e de fronteira
 - [x] README com instruções de execução, dependências e exemplos
 - [x] Pasta `implementacoes/` com código-fonte organizado
 - [x] Pasta `testes/` com rastreamentos detalhados
-- [x] Pasta `slides/` com slides em Markdown
+- [x] Pasta `slides/` com apresentação
 - [x] Arquivo `uso_ia.md` com declaração de IA
 - [x] Referências bibliográficas citadas
 - [x] Implementações executáveis com `python <arquivo>.py`

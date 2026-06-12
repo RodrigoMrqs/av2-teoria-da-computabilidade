@@ -1,6 +1,6 @@
 # Declaração de Uso de Inteligência Artificial
 
-**Equipe:** João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noam Geraldo Ismael Coelho  
+**Equipe:** João Pedro Silva da Silva · Rodrigo Marques Matos da Silva · Noam Geraldo Ismael  Coelho · Analice Alves Johnston Pinheiro
 **Disciplina:** Teoria da Computabilidade — Prof. Daniel Leal Souza  
 **Semestre:** 01/2026
 
@@ -99,5 +99,6 @@
 *João Pedro Silva da Silva*  
 *Rodrigo Marques Matos da Silva*  
 *Noam Geraldo Ismael Coelho*  
+*Analice Alves Johnston Pinheiro*  
 
 **Data:** Junho de 2026

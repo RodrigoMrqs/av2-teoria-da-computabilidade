@@ -1,3 +1,6 @@
+# Saída: NDTM — Reconhecedor de Palíndromos
+
+```
 ────────────────────────────────────────────────────────────────
   DEFINIÇÃO FORMAL DA NDTM
 ────────────────────────────────────────────────────────────────
@@ -202,3 +205,4 @@ Passo  30 | Estado: q_accept         | Cab: 6 | Fita:  $  X  X  X  X  X [_] _
 
   Entrada: 'abab'  →  REJEITADA
   Ramos explorados: 9  |  Profundidade máxima: 6  |  Ramos rejeitados: 2
+```

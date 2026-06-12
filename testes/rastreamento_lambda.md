@@ -12,17 +12,17 @@
 |---|-----------|-------------|----------|---------|
 | 1 | `(λx.x) z` | `z` | 1 | ✅ |
 | 2 | `(λx.λy.x) a b` | `a` | 2 | ✅ |
-| 3 | `S I I z` (expandido) | `z z` | 4 | ✅ |
+| 3 | `S I I z` (expandido) | `z z` | 5 | ✅ |
 | 4 | `SUCC 0` | `Church(1)` | 3 | ✅ |
 | 5 | `ADD 1 1` | `Church(2)` | 6 | ✅ |
 | 6 | `AND TRUE FALSE` | `α≡ FALSE` | 4 | ✅ |
 | 7 | `NOT TRUE` | `α≡ FALSE` | 3 | ✅ |
-| 8 | `MUL 2 2` | `Church(4)` | 5 | ✅ |
-| 9 | `IF TRUE x y` | `x` | 2 | ✅ |
+| 8 | `MUL 2 2` | `Church(4)` | 7 | ✅ |
+| 9 | `IF TRUE x y` | `x` | 5 | ✅ |
 | 10 | `OR FALSE TRUE` | `α≡ TRUE` | 4 | ✅ |
 | 11 | `Ω = (λx.x x)(λx.x x)` | diverge | ∞ (detectado) | ✅ |
 
-Total de β-reduções nos 10 exemplos com forma normal: **34 passos**  
+Total de β-reduções nos 10 exemplos com forma normal: **40 passos**  
 Todos os 11 exemplos com resultado correto: ✅
 
 ---
@@ -241,4 +241,4 @@ Passo 2: (λx.x x)(λx.x x)    ← idem
 | **α-renomeação** | Substituição captura-evitante com geração de nomes frescos |
 | **Divergência** | `Ω = (λx.x x)(λx.x x)` não possui forma normal — demonstra limites do λ-Cálculo |
 | **Hipótese Church-Turing** | Qualquer algoritmo é computável no λ-Cálculo se e somente se for computável em uma MT |
-| **Total de passos** | 34 passos β nos 10 exemplos com forma normal (> 7 exigidos pelo critério) |
+| **Total de passos** | 40 passos β nos 10 exemplos com forma normal (> 7 exigidos pelo critério) |

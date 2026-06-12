@@ -10,21 +10,21 @@
 
 | # | Entrada | Esperado | Obtido | Ramos | Passos | Correto |
 |---|---------|----------|--------|-------|--------|---------|
-| 1 | `""` (vazia) | ACEITA | ACEITA | 1 | 0 | ✅ |
-| 2 | `"a"` | ACEITA | ACEITA | 2 | 4 | ✅ |
-| 3 | `"b"` | ACEITA | ACEITA | 2 | 4 | ✅ |
-| 4 | `"aa"` | ACEITA | ACEITA | 3 | 7 | ✅ |
-| 5 | `"bb"` | ACEITA | ACEITA | 3 | 7 | ✅ |
-| 6 | `"aba"` | ACEITA | ACEITA | 7 | 12 | ✅ |
-| 7 | `"bab"` | ACEITA | ACEITA | 7 | 12 | ✅ |
-| 8 | `"abba"` | ACEITA | ACEITA | 6 | 16 | ✅ |
-| 9 | `"aabaa"` | ACEITA | ACEITA | 14 | 20 | ✅ |
-| 10 | `"ababa"` | ACEITA | ACEITA | 18 | 22 | ✅ |
-| 11 | `"ab"` | REJEITA | REJEITA | 4 | 7 | ✅ |
-| 12 | `"ba"` | REJEITA | REJEITA | 4 | 7 | ✅ |
-| 13 | `"abb"` | REJEITA | REJEITA | 8 | 10 | ✅ |
-| 14 | `"abab"` | REJEITA | REJEITA | 14 | 14 | ✅ |
-| 15 | `"aab"` | REJEITA | REJEITA | 8 | 11 | ✅ |
+| 1 | `""` (vazia) | ACEITA | ACEITA | 2 | 1 | ✅ |
+| 2 | `"a"` | ACEITA | ACEITA | 5 | 2 | ✅ |
+| 3 | `"b"` | ACEITA | ACEITA | 5 | 2 | ✅ |
+| 4 | `"aa"` | ACEITA | ACEITA | 12 | 9 | ✅ |
+| 5 | `"bb"` | ACEITA | ACEITA | 12 | 9 | ✅ |
+| 6 | `"aba"` | ACEITA | ACEITA | 18 | 12 | ✅ |
+| 7 | `"bab"` | ACEITA | ACEITA | 18 | 12 | ✅ |
+| 8 | `"abba"` | ACEITA | ACEITA | 30 | 25 | ✅ |
+| 9 | `"aabaa"` | ACEITA | ACEITA | 39 | 30 | ✅ |
+| 10 | `"ababa"` | ACEITA | ACEITA | 39 | 30 | ✅ |
+| 11 | `"ab"` | REJEITA | REJEITA | 6 | 3 | ✅ |
+| 12 | `"ba"` | REJEITA | REJEITA | 6 | 3 | ✅ |
+| 13 | `"abb"` | REJEITA | REJEITA | 8 | 5 | ✅ |
+| 14 | `"abab"` | REJEITA | REJEITA | 9 | 6 | ✅ |
+| 15 | `"aab"` | REJEITA | REJEITA | 8 | 5 | ✅ |
 
 ---
 
@@ -62,7 +62,7 @@ Ramo B com `a` como centro: rejeita (sobra `b` após o X).
 | 10 | q_center_b | 3 | `$ X X X _ _` | `X` | `X` | R |
 | 11 | q_center_b | 4 | `$ X X X _ _` | `_` | — | ACEITA ✅ |
 
-**Resultado:** ACEITA após 11 passos no ramo aceitante. Ramos explorados: 7.
+**Resultado:** ACEITA após 12 passos no ramo aceitante. Ramos explorados: 18.
 
 ---
 
@@ -95,7 +95,7 @@ Ramo B com `a` como centro: rejeita (sobra `b` após o X).
 | ... | q0 | ... | `$ X X X X _` | Lê `X` → pula até `_` |
 | fim | q_accept | — | — | ACEITA ✅ |
 
-**Resultado:** ACEITA após 16+ passos. Ramos explorados: 6.
+**Resultado:** ACEITA após 25 passos. Ramos explorados: 30.
 
 ---
 
@@ -124,7 +124,7 @@ Ramo B com `a` como centro: rejeita (sobra `b` após o X).
 | 1 | q_center_a | 2 | `$ X b _` | Lê `b` ≠ X/_ → REJEITA ❌ |
 
 Todos os ramos rejeitam.  
-**Resultado:** REJEITA. Ramos explorados: 4. Ramos rejeitados: 4.
+**Resultado:** REJEITA. Ramos explorados: 6. Ramos rejeitados: 6.
 
 ---
 
@@ -135,7 +135,7 @@ Todos os ramos falham ao tentar combinar pares simétricos:
 - `b` esquerdo vs. `a` direito → mismatch
 - Ramificações de centro: sobram símbolos não-X
 
-**Resultado:** REJEITA. Ramos explorados: 14. Profundidade máxima: 14.
+**Resultado:** REJEITA. Ramos explorados: 9. Profundidade máxima: 6.
 
 ---
 
@@ -144,7 +144,7 @@ Todos os ramos falham ao tentar combinar pares simétricos:
 | Aspecto | Detalhe |
 |---------|---------|
 | **Número de estados** | 10 (> 8 exigidos) |
-| **Número de transições** | 41 entradas em δ |
+| **Número de transições** | 40 entradas em δ |
 | **Pontos ND** | 2 pares (q0,'a') e (q0,'b') — grau 2 cada |
 | **Linguagem reconhecida** | L_pal = { w ∈ {a,b}* \| w = wᴿ } (não regular, livre de contexto) |
 | **Complexidade temporal** | O(n²) passos no pior caso |
